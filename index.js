@@ -55,9 +55,9 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 banChats = true
 offline = false
-targetpc = '6285751056816'
-owner = '6285751056816'
-fake = 'HEXAGONZ'
+targetpc = '60102810046'
+owner = '60102810046'
+fake = 'ꋬ꒐ꂵꋬꋊ メ *͘⁴̅⁰͍⁴̵'
 numbernye = '0'
 waktu = '-'
 alasan = '-'
@@ -814,8 +814,8 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
             encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 		    media = await hexa.downloadAndSaveMediaMessage(encmedia)
             anu = args.join(' ').split('|')
-            satu = anu[0] !== '' ? anu[0] : `SELF`
-            dua = typeof anu[1] !== 'undefined' ? anu[1] : `BOT`
+            satu = anu[0] !== '' ? anu[0] : `ꋬ꒐ꂵꋬꋊ メ *͘⁴̅⁰͍⁴̵`
+            dua = typeof anu[1] !== 'undefined' ? anu[1] : `wa.me/60102810046`
             require('./lib/fetcher.js').createExif(satu, dua)
 			require('./lib/fetcher.js').modStick(media, hexa, mek, from)
 			break
