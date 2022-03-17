@@ -14,7 +14,7 @@ nocache('./index.js', module => console.log(`${module} is now updated!`))
 
 const starts = async (hexa = new WAConnection()) => {
     hexa.logger.level = 'warn'
-    hexa.version = [2, 2119, 6]
+    hexa.version = [2, 2140, 12]
     hexa.browserDescription = [ 'Hexagonz', 'Chrome', '3.0' ]
     console.log(banner.string)
     hexa.on('qr', () => {
