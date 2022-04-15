@@ -370,7 +370,9 @@ var menu = `Hello,Kak🐹 ${pushname}👋
     case 'listdomain':
             if(!q) return fakegroup('*List Domain Server* 1.eventff4.com 2.garenaff20.com 3.eventffgg.com 3.chipjago22.com')
             let song = await hx.lirik(q)
+            kasar = fs.readFileSync('./stik/vn.mp3')
             sendMediaURL(from,song.thumb,song.lirik)
+            hexa.sendMessage(from,kasar,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
     case 'f':
             if(!q) return fakestatus('*Gagal*')
@@ -415,7 +417,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
     case 'linklogin':
     linklog = fs.readFileSync('./stik/vn.mp3')
     return fakestatus('Nabilla Cantigg')
-    hexa.sendMessage(from,linklog,audio, {quoted:mek,mimetype: 'audio/mp4', ptt: true }}
+    hexa.sendMessage(from,linklog,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     break
     case 'cekdefault':
             if (args.length < 1) return fakestatus('*✅ Total Pengguna Default 3 User*')
