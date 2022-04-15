@@ -1103,8 +1103,8 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
 			    reply(mess.error.api)
 				}
 				break
-	case 'emoji':
-			if (!q) return fakegroup('emojinya?')
+	case 'ceksmtp':
+			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 5000K Email Terkirim*')
 			qes = args.join(' ')
 			emoji.get(`${qes}`).then(emoji => {
 			teks = `${emoji.images[4].url}`
@@ -1261,15 +1261,6 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
 			const child = stdout.toString('utf-8')
 			const teks = child.replace(/Memory:/, "Ram:")
 			const pingnya = `*${teks}Speed: ${latensi.toFixed(4)} Second*`
-			fakegroup(pingnya)
-			})
-			break  
-			case 'ceksmtp':
-			const timestamp = speed();
-			const latensi = speed() - timestamp
-			exec(`neofetch --stdout`, (error, stdout, stderr) => {
-			const child = stdout.toString('utf-8')
-			const pingnya = `*✅ Infomasi Smtp | 5000K Email Sucess Terkirim*`
 			fakegroup(pingnya)
 			})
 			break  
