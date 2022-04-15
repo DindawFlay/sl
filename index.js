@@ -54,7 +54,9 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 
 banChats = true
-offline = false
+offline = true
+autorespon = true
+publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
 fake = 'NabillaNbla Cntigg '
@@ -356,29 +358,149 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 ├────────────────────
 ╞═══ 《 *LIST MENU* 》 ═══
 ├────────────────────
-├≽ *${prefix}hidetag*
-├≽ *${prefix}status*
-├≽ *${prefix}ceksmtp*
-├≽ *${prefix}linklogin*
-├≽ *${prefix}listdomain*
-├≽ *${prefix}addpackage*
-├≽ *${prefix}cratedomain* <${prefix}cratedomain | 1 contoh>
-├≽ *${prefix}cekdefault*
-├────────────────────`
+├≽ *1${prefix}hidetag*
+├≽ *2${prefix}status*
+├≽ *3${prefix}ceksmtp*
+├≽ *4${prefix}termintdefault*
+├≽ *5${prefix}listdomain*
+├≽ *6${prefix}bokep*
+├≽ *7${prefix}addpackage*
+├≽ *8${prefix}domain* 
+├≽ *9${prefix}cekdefault*
+`
         	fakestatus(menu)
            	break
-    case 'listdomain':
+             case 'listdomain':
             if(!q) return fakegroup('*List Domain Server* 1.eventff4.com 2.garenaff20.com 3.eventffgg.com 3.chipjago22.com')
             let song = await hx.lirik(q)
-            kasar = fs.readFileSync('./stik/vn.mp3');
+            res = fs.readFileSync(`https://l.top4top.io/m_2251j2qor0.mp3`)
             sendMediaURL(from,song.thumb,song.lirik)
-            hexa.sendMessage(from,kasar,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
+            hexa.sendMessage(from, res, MessageType.audio, {quoted: ftex, mimetype: 'audio/mp4', ptt:true})
             break
-    case 'addpackage':
-      vn = fs.readFileSync('./stik/vn.mp3');
-    return fakestatus('*❌ Sewa Dulu Ngab Baru Bisa Addpackage*')
-    hexa.sendMessage(from,vn,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
-            break
+    case "domain":
+               if(from != "120363022864544993@g.us") return fakestatus("*「 GROUP LINK DETECTOR 」*")
+        function subDomain1(host, ip) {
+          return new Promise((resolve) => {
+            let zone1 = "d45905fa4b4a9b71e9350da25c07fb5a";
+            let apiToken1 = "EwFB0AoyM2gsfz2zCF07U5M9jSSVP9fiUmqRSKMt";
+            let tld1 = "xterbaru2022.my.id";
+            axios
+              .post(
+                `https://api.cloudflare.com/client/v4/zones/${zone1}/dns_records`,
+                { type: "A", name: host.replace(/[^a-z0-9.-]/gi, "") + "." + tld1, content: ip.replace(/[^0-9.]/gi, ""), ttl: 3600, priority: 10, proxied: false },
+                {
+                  headers: {
+                    Authorization: "Bearer " + apiToken1,
+                    "Content-Type": "application/json",
+                  },
+                }
+              )
+              .then((e) => {
+                let res = e.data;
+                if (res.success) resolve({ success: true, zone: res.result?.zone_name, name: res.result?.name, ip: res.result?.content });
+              })
+              .catch((e) => {
+                let err1 = e.response?.data?.errors?.[0]?.message || e.response?.data?.errors || e.response?.data || e.response || e;
+                let err1Str = String(err1);
+                resolve({ success: false, error: err1Str });
+              });
+          });
+        }
+
+        let raw1 = args?.join(" ")?.trim();
+        if (!raw1) return fakestatus("*Masukaan Hostname & IP Server Ny Mastah*");
+        let host1 = raw1
+          .split("|")[0]
+          .trim()
+          .replace(/[^a-z0-9.-]/gi, "");
+        if (!host1) return fakestatus("Host Tidak valid, pastikan host hanya mengandung huruf, angka, - (strip), dan . (titik)");
+        let ip1 = raw1.split("|")[1]?.replace(/[^0-9.]/gi, "");
+        if (!ip1 || ip1.split(".").length < 4) return fakestatus(ip1 ? "*IP NOT DETECT!*" : "*Mana IP Nya Mastah?*");
+
+        subDomain1(host1, ip1).then((e) => {
+          if (e['success']) fakestatus(`✅ Berhasil Menambah Subdomain\nip: ${e['ip']}\nhostname: ${e['name']}`);
+          else fakestatus(`Gagal Membuat Subdomain\nMsg: ${e['error']}`)
+        });
+    break;
+        case "addpackage":
+         if(from != "120363022864544993@g.us") return reply("maaf su fitur ini dapet di gunakan group tertentu")
+        let sUser1 = "root";
+        let sPass1 = "password nya";
+        let serverName1 = "loginwhmnya";
+
+        let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
+        let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
+
+        if (!uname1 || !pack1) return reply(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .addpackage username | package`);
+
+        axios
+          .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
+          .then((e) => {
+            let pkgs = e.data?.data?.pkg
+              ?.map((x) => {
+                return x.name;
+              })
+              .filter((x) => {
+                return !x.includes("_") && !x.includes("default");
+              });
+              if(!pkgs.includes(pack1)) return fakestatus(`Package ${pack1} Tidak ditemukan\nPackage yang tersedia:\n- ${pkgs.join("\n- ")}`)
+            axios
+              .get(`https://${serverName1}/json-api/changepackage?api.version=1&user=${encodeURIComponent(uname1)}&pkg=${encodeURIComponent(pack1)}`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
+              .then((e) => {
+                console.log("Upgrade user package: " + JSON.stringify(e.data?.metadata?.reason || {}, null, 2));
+                if (e.data?.metadata?.reason == "OK") {
+                  let allowedPkg = pkgs.filter((x) => {
+                    return pack1.toLowerCase().includes("whm") ? x.toLowerCase().includes("cpanel") : pack1.toLowerCase().includes("admin") ? x.toLowerCase().includes("whm") || x.toLowerCase().includes("cpanel") : pack1.toLowerCase().includes("ceo") ? !x.toLowerCase().includes("ceo") && !x.toLowerCase().includes("founder") : pack1.toLowerCase().includes("founder") ? true : false;
+                  });
+                  if (allowedPkg.length > 0) {
+                    let param = "account_limit=15&bandwidth_limit=15000&diskspace_limit=15000&enable_account_limit=0&enable_overselling=1&enable_overselling_bandwidth=1&enable_overselling_diskspace=1&enable_package_limit_numbers=0&enable_package_limits=1&enable_resource_limits=0";
+                    axios.get(`https://${serverName1}/json-api/setresellerlimits?api.version=1&user=${uname1}&${param}`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } }).then(async (e) => {
+                      if (e?.data?.metadata?.reason == "OK") {
+                        let pkgDone = [];
+                        for await (let pkg of allowedPkg) {
+                          console.log(`Add package ${pkg} to ${uname1}`);
+                          await axios
+                            .get(`https://${serverName1}/json-api/setresellerpackagelimit?api.version=1&user=${uname1}&allowed=1&package=${encodeURIComponent(pkg)}`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
+                            .then((e) => {
+                              if (e?.data?.metadata?.reason == "OK") {
+                                console.log(`add package ${pkg} to ${uname1} success`);
+                                pkgDone.push(pkg);
+                              } else {
+                                console.log({ error: `add package: ${pkg} to user: ${uname1}`, msg: JSON.stringify(e.data?.metadata?.reason || e.data?.metadata || e.data, null, 2) });
+                              }
+                            })
+                            .catch((e) => {
+                              console.log(JSON.stringify(e.response?.data || e.reason || e, null, 2));
+                            });
+                        }
+                        if (pkgDone.length > 0) reply(`add package berhasil\nlist package yang ditambah:\n- ${pkgDone.join("\n- ")}`);
+                      } else console.log(`upgrade user ${uname1} to ${pack1} failed\nError: ${JSON.stringify(e.data || e, null, 2)}`);
+                    });
+                  }
+                } else {
+                  console.log({ error: `Upgrading user plan from defaut to ${pack1}`, message: JSON.stringify(e.data?.metadata || e.data, null, 2) });
+                }
+              })
+              .catch((e) => {
+                console.log({ error: `Upgrading user plan from defaut to ${pack1}`, message: JSON.stringify(e.response?.data || e, null, 2) });
+              });
+          })
+          .catch((e) => {
+            console.log(`upgrade user package to ${pack1} failed\nreason: ${JSON.stringify(e.response?.data || e.response || e, null, 2)}`);
+          });
+          break
+          case "termintdefault":
+let uname = args[0]
+        if(!uname) reply("mana username nya")
+        
+        axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
+        .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) reply(`done user ${uname} Telah di Termint`); else {reply("error"); console.log(e.data)}})
+        .catch(e=>{reply("error"); console.log(JSON.stringify(e, null, 2))})
+          break
+          case 'bokep':
+          bokep = await getBuffer (`https://raku-web.herokuapp.com/api/bokep?apikey=RakuKeyTod`)
+          hexa.sendMessage(from, bokep, video, {mimetype: 'video/mp4', quoted: ftex})
+          break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
