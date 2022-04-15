@@ -367,11 +367,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
         	fakestatus(menu)
            	break
     case 'listdomain':
-            if(!q) return fakegroup('*List Domain Server* 
-1.eventff4.com 
-2.garenaff20.com
-3.eventffgg.com
-3.chipjago22.com')
+            if(!q) return fakegroup('*List Domain Server* 1.eventff4.com 2.garenaff20.com 3.eventffgg.com 3.chipjago22.com')
             let song = await hx.lirik(q)
             sendMediaURL(from,song.thumb,song.lirik)
             break
