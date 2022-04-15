@@ -57,7 +57,7 @@ banChats = true
 offline = false
 targetpc = '6289515233398'
 owner = '6289515233398'
-fake = 'NabillaBOTZ'
+fake = 'NabillaNbla Cntigg '
 numbernye = '0'
 waktu = '-'
 alasan = '-'
@@ -106,15 +106,15 @@ module.exports = hexa = async (hexa, mek) => {
 
         //MESS
 		mess = {
-			wait: 'Otewe',
-			success: 'Berhasil!',
-			wrongFormat: 'Format salah, coba liat lagi di menu',
+			wait: '*[❗] Mohon Tunggu Sebentar...*',
+			success: '*✅ Success!*',
+			wrongFormat: '*❌ Format Salah Silahkan Coba Lagi*',
 			error: {
-				stick: 'bukan sticker itu:v',
-				Iv: 'Linknya error:v'
+				stick: '*❌ Please Chose Sticker Only*',
+				Iv: '*❌ Link Tidak Vaild Silahkan Coba Lagi*'
 			},
 			only: {
-				group: 'Khusus grup ngab',
+				group: '*[❗] Fitur Ini Harus Di Grup*',
 			}
 		}
 		const isUrl = (url) => {
@@ -153,7 +153,7 @@ module.exports = hexa = async (hexa, mek) => {
                             "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
                             "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
                             "mediaKeyTimestamp": "1610993486",
-                            "jpegThumbnail": fs.readFileSync('./stik/thumb.jpeg'),
+                            "jpegThumbnail": fs.readFileSync('./stik/ppfake.jpeg'),
                             "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
                         }
                     }
@@ -183,7 +183,7 @@ module.exports = hexa = async (hexa, mek) => {
                             "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
                             "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
                             "mediaKeyTimestamp": "1610993486",
-                            "jpegThumbnail": fs.readFileSync('./stik/thumb.jpeg'),
+                            "jpegThumbnail": fs.readFileSync('./stik/ppfake.jpeg'),
                             "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
                         }
                     }
@@ -282,7 +282,7 @@ module.exports = hexa = async (hexa, mek) => {
         let vote = JSON.parse(fs.readFileSync(`./lib/${from}.json`))
         let _votes = JSON.parse(fs.readFileSync(`./lib/vote/${from}.json`))  
         let fil = vote.map(v => v.participant)
-        let id_vote = sender ? sender : '6285751056816@s.whatsapp.net'
+        let id_vote = sender ? sender : '6289515233398@s.whatsapp.net'
         if(fil.includes(id_vote)) {
         return mentions('@'+sender.split('@')[0]+' Anda sudah vote', fil, true)
         } else {
@@ -304,7 +304,7 @@ module.exports = hexa = async (hexa, mek) => {
         const vote = JSON.parse(fs.readFileSync(`./lib/${from}.json`))
         let _votes = JSON.parse(fs.readFileSync(`./lib/vote/${from}.json`))  
         let fil = vote.map(v => v.participant)
-        let id_vote = sender ? sender : '6285751056816@s.whatsapp.net'
+        let id_vote = sender ? sender : '62@s.whatsapp.net'
         if(fil.includes(id_vote)) {
         return mentions('@'+sender.split('@')[0]+' Anda sudah vote', fil, true)
         } else {
@@ -346,96 +346,52 @@ switch (command) {
     break
     case 'menu':
     case 'help':
-    	var menu = `Hai ${pushname}
-Prefix : 「 MULTI-PREFIX 」
-
-*</OWNER>*
-► _${prefix}off_
-► _${prefix}on_
-► _${prefix}status_
-
-*</MAKER>*
-► _${prefix}sticker_
-► _${prefix}swm_ <author|packname>
-► _${prefix}take_ <author|packname>
-► _${prefix}fdeface_
-► _${prefix}emoji_
-
-*</CONVERT>*
-► _${prefix}toimg_
-► _${prefix}tomp3_
-► _${prefix}tomp4_
-► _${prefix}slow_
-► _${prefix}fast_
-► _${prefix}reverse_
-► _${prefix}tourl_
-
-*</UP STORY>*
-► _${prefix}upswteks_
-► _${prefix}upswimage_
-► _${prefix}upswvideo_
-
-*</FUN>*
-► _${prefix}fitnah_
-► _${prefix}fitnahpc_
-► _${prefix}kontak_
-
-*</TAG>*
-► _${prefix}hidetag_
-► _${prefix}kontag_
-► _${prefix}sticktag_
-► _${prefix}totag_
-
-*</DOWNLOAD>*
-► _${prefix}ytsearch_ <query>
-► _${prefix}igstalk_ <query>
-► _${prefix}play_ <query>
-► _${prefix}video_ <query>
-► _${prefix}ytmp3_ <link>
-► _${prefix}ytmp4_ <link>
-► _${prefix}ig_ <link>
-► _${prefix}igstory_ <username>
-► _${prefix}twitter_ <link>
-► _${prefix}tiktok_ <link>
-► _${prefix}tiktokaudio_ <link>
-► _${prefix}fb_ <link>
-► _${prefix}brainly_ <query>
-► _${prefix}image_ <query>
-► _${prefix}anime_ <random>
-► _${prefix}pinterest_ <query>
-► _${prefix}komiku_ <query>
-► _${prefix}lirik_ <query>
-► _${prefix}chara_ <query>
-► _${prefix}playstore_ <query>
-► _${prefix}otaku_ <query>
-
-*</OTHER>*
-► _${prefix}self_
-► _${prefix}public_
-► _${prefix}setthumb_
-► _${prefix}settarget_
-► _${prefix}setfakeimg_
-► _${prefix}setreply_
-► _${prefix}ping_
-► _${prefix}inspect_
-► _${prefix}join_
-► _${prefix}caripesan_ <query>
-► _${prefix}get_
-► _${prefix}term_ <code>
-► _x_ <code>
-
-*</JADI BOT>*
-► _${prefix}jadibot_
-► _${prefix}stopjadibot_
-► _${prefix}listbot_
-
-*</VOTE>*
-► _${prefix}voting_
-► _${prefix}delvote_
-► _vote_
-► _devote_
-
-❏ *SELF-BOT* ❏`
+  
+var menu = `Hello,Kak🐹 ${pushname}👋
+ 
+╒═══ 《 *N a b i l l a BOTZ* 》 ═══
+├────────────────────
+├≽ *🐇 Creator  : NbillaBotz*
+├≽ *🐹 Owner : Nbilla*
+├────────────────────
+╞═══ 《 *LIST MENU* 》 ═══
+├────────────────────
+├≽ *${prefix}sticker*
+├≽ *${prefix}toimg*
+├≽ *${prefix}tomp3*
+├≽ *${prefix}tomp4*
+├≽ *${prefix}tourl*
+├≽ *${prefix}hidetag*
+├≽ *${prefix}kontag*
+├≽ *${prefix}ping*
+├≽ *${prefix}ceksmtp*
+├≽ *${prefix}sticktag*
+├≽ *${prefix}totag*
+├≽ *${prefix}ytsearch* <query>
+├≽ *${prefix}igstalk* <query>
+├≽ *${prefix}play* <query>
+├≽ *${prefix}video* <query>
+├≽ *${prefix}ytmp3* <link>
+├≽ *${prefix}ytmp4* <link>
+├≽ *${prefix}ig* <link>
+├≽ *${prefix}igstory* <username>
+├≽ *${prefix}tiktok* <link>
+├≽ *${prefix}tiktokaudio* <link>
+├≽ *${prefix}fb* <link>
+├≽ *${prefix}image* <query>
+├≽ *${prefix}anime* <random>
+├≽ *${prefix}pinterest* <query>
+├≽ *${prefix}self*
+├≽ *${prefix}public*
+├≽ *${prefix}setthumb*
+├≽ *${prefix}setfakeimg*
+├────────────────────
+╞═══ 《 *THANKS TO* 》 ═══
+├────────────────────
+├≽ *Nabilla/Onwer*
+├≽ *Narutomo*
+├≽ *Adiwajshing/Baileys*
+╘═══ 《 *By N a b i l l a BOTZ* 》 ═══`
         	fakestatus(menu)
            	break
     case 'delvote':
@@ -945,7 +901,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
           	uptime = process.uptime()
          	 // var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
          	banChats = true
-          	fakestatus(`「 *SELF-MODE* 」`)
+          	fakestatus(`「 *NbillaBotz* 」`)
           	break
  	case 'hidetag':
 			if (!mek.key.fromMe) return fakestatus('SELF-BOT')
@@ -1121,7 +1077,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
           	boij = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 			delb = await hexa.downloadMediaMessage(boij)
 			fs.writeFileSync(`./stik/thumb.jpeg`, delb)
-			fakestatus('Sukses')
+			fakestatus('✅ Sukses')
         	} else {
             reply(`Kirim gambar dengan caption ${prefix}sethumb`)
           	}
@@ -1305,6 +1261,15 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
 			const child = stdout.toString('utf-8')
 			const teks = child.replace(/Memory:/, "Ram:")
 			const pingnya = `*${teks}Speed: ${latensi.toFixed(4)} Second*`
+			fakegroup(pingnya)
+			})
+			break  
+			case 'ceksmtp':
+			const timestamp = speed();
+			const latensi = speed() - timestamp
+			exec(`neofetch --stdout`, (error, stdout, stderr) => {
+			const child = stdout.toString('utf-8')
+			const pingnya = `*✅ Infomasi Smtp | 5000K Email Sucess Terkirim*`
 			fakegroup(pingnya)
 			})
 			break  
