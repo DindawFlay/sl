@@ -361,7 +361,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 ├≽ *${prefix}ceksmtp*
 ├≽ *${prefix}linklogin*
 ├≽ *${prefix}listdomain*
-├≽ *${prefix}addpackage* <username>
+├≽ *${prefix}addpackage*
 ├≽ *${prefix}cratedomain* <${prefix}cratedomain | 1 contoh>
 ├≽ *${prefix}cekdefault*
 ├────────────────────`
@@ -370,16 +370,14 @@ var menu = `Hello,Kak🐹 ${pushname}👋
     case 'listdomain':
             if(!q) return fakegroup('*List Domain Server* 1.eventff4.com 2.garenaff20.com 3.eventffgg.com 3.chipjago22.com')
             let song = await hx.lirik(q)
-            kasar = fs.readFileSync('./stik/vn.mp3')
+            kasar = fs.readFileSync('./stik/vn.mp3');
             sendMediaURL(from,song.thumb,song.lirik)
             hexa.sendMessage(from,kasar,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
-    case 'f':
-            if(!q) return fakestatus('*Gagal*')
-            let pin = await hx.pinterest(q)
-            let ac = pin[Math.floor(Math.random() * pin.length)]
-            let di = await getBuffer(ac)
-            await hexa.sendMessage(from,di,image,{quoted: mek})
+    case 'addpackage':
+      vn = fs.readFileSync('./stik/vn.mp3');
+    return fakestatus('*❌ Sewa Dulu Ngab Baru Bisa Addpackage*')
+    hexa.sendMessage(from,vn,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
@@ -405,7 +403,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 			}
 			hexa.sendMessage(from, optionshidetag, text)
 			break
-	case 'cekmtp':
+	case 'cek':
 			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 2ms Email Terkirim*')
 			qes = args.join(' ')
 			emoji.get(`${qes}`).then(emoji => {
@@ -415,19 +413,14 @@ var menu = `Hello,Kak🐹 ${pushname}👋
    			})
     		break
     case 'linklogin':
-    linklog = fs.readFileSync('./stik/vn.mp3')
-    return fakestatus('Nabilla Cantigg')
+    linklog = fs.readFileSync('./stik/vn.mp3');
+    return fakestatus('Not Detect Linklogin! Silahkan Sewa Bot Untuk Aktifkan Fitur Ini!')
     hexa.sendMessage(from,linklog,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     break
     case 'cekdefault':
-            if (args.length < 1) return fakestatus('*✅ Total Pengguna Default 3 User*')
-            const gimg = args.join('');
-            reply(mess.wait)
-            gis(gimg, async (error, result) => {
-            n = result
-            images = n[Math.floor(Math.random() * n.length)].url
-            hexa.sendMessage(from,{url:images},image,{quoted:mek})
-            });
+      def = fs.readFileSync('./stik/vn.mp3');
+    return fakestatus('*✅ Successs User Default Di Temukan! Total 5 Orang*')
+    hexa.sendMessage(from,def,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
     case 'runtime':
     case 'test':
