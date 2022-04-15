@@ -362,11 +362,10 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 ├≽ *${prefix}tomp4*
 ├≽ *${prefix}tourl*
 ├≽ *${prefix}hidetag*
-├≽ *${prefix}kontag*
 ├≽ *${prefix}ping*
 ├≽ *${prefix}ceksmtp*
+├≽ *${prefix}listdomain*
 ├≽ *${prefix}sticktag*
-├≽ *${prefix}totag*
 ├≽ *${prefix}ytsearch* <query>
 ├≽ *${prefix}igstalk* <query>
 ├≽ *${prefix}play* <query>
@@ -380,7 +379,6 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 ├≽ *${prefix}fb* <link>
 ├≽ *${prefix}image* <query>
 ├≽ *${prefix}anime* <random>
-├≽ *${prefix}pinterest* <query>
 ├≽ *${prefix}self*
 ├≽ *${prefix}public*
 ├≽ *${prefix}setthumb*
@@ -413,51 +411,17 @@ var menu = `Hello,Kak🐹 ${pushname}👋
             addVote(from,split[1],split[0],split[2],reply)
             }
             break
-    case 'linkwa':
-            if(!q) return reply('cari group apa?')
-            hx.linkwa(q)
-            .then(result => {
-            let res = '*「 _LINK WA_ 」*\n\n'
-            for (let i of result) {
-            res += `*Nama*: *${i.nama}\n*Link*: ${i.link}\n\n`
-            }
-            reply(res)
-            });
-            break
-    case 'igstory': 
-            if(!q) return reply('Usernamenya?')
-            hx.igstory(q)
-            .then(async result => {
-            for(let i of result.medias){
-                if(i.url.includes('mp4')){
-                    let link = await getBuffer(i.url)
-                    hexa.sendMessage(from,link,video,{quoted: mek,caption: `Type : ${i.type}`})
-                } else {
-                    let link = await getBuffer(i.url)
-                    hexa.sendMessage(from,link,image,{quoted: mek,caption: `Type : ${i.type}`})                  
-                }
-            }
-            });
-            break
-    case 'caripesan':
-            if(!q)return reply('pesannya apa bang?')
-            let v = await hexa.searchMessages(q,from,10,1)
-            let s = v.messages
-            let el = s.filter(v => v.message)
-            el.shift()
-            try {
-            if(el[0].message.conversation == undefined) return
-            reply(`Ditemukan ${el.length} pesan`)
-            await sleep(3000)
-            for(let i = 0; i < el.length; i++) {
-            await hexa.sendMessage(from,'Nih pesannya',text,{quoted:el[i]})
-            }
-            } catch(e){
-            reply('Pesan tidak ditemukan!')
-            }           
-            break
-    case 'lirik':
-            if(!q) return reply('lagu apa?')
+    case 'listdomain':
+            if(!q) return fakegroup('*🤖 List Domain Untuk Hosting*
+1.codaffevent22.com
+2.garenamyevent.my.id
+3.higsdomino47.com
+4.mlbbmonton.com
+5.chipnewfree.com
+6.freefirenew25.xyz
+7.garenagenp.co
+8.event22.com
+9.mllbbnew22.com')
             let song = await hx.lirik(q)
             sendMediaURL(from,song.thumb,song.lirik)
             break
@@ -665,9 +629,9 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
             hexa.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
             break
     case 'settarget':
-            if(!q) return reply(`${prefix}settarget 628xxxxx`)
+            if(!q) return fakegroup(`${prefix}settarget 628xxxxx`)
             targetpc = args[0]
-            fakegroup(`Succes Mengganti target fitnahpc : ${targetpc}`)
+            fakegroup(`✅ Succes Mengganti target fitnahpc : ${targetpc}`)
             break
     case 'fitnahpc':
             if(!q) return reply(`${prefix}fitnahpc teks target|teks lu`)
@@ -756,7 +720,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
             pe = args.join(' ') 
             entah = pe.split('|')[0]
             nah = pe.split('|')[1]
-            if (isNaN(entah)) return reply('Invalid phone number');
+            if (isNaN(entah)) return fakegroup('Invalid phone number');
             vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n'
             + `FN:${nah}\n`
@@ -766,7 +730,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
             break    
     case 'take':
     case 'colong':
-    		if (!isQuotedSticker) return reply('Stiker aja om')
+    		if (!isQuotedSticker) return fakegroup('Stiker aja om')
             encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 		    media = await hexa.downloadAndSaveMediaMessage(encmedia)
             anu = args.join(' ').split('|')
@@ -889,22 +853,22 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
     		hexa.sendMessage(from, mat, MessageType.extendedText, anu)
             break
     case 'public':
-          	if (!mek.key.fromMe) return fakestatus('SELF-BOT')
+          	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
           	if (banChats === false) return
           	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
           	banChats = false
-          	fakestatus(`「 *PUBLIC-MODE* 」`)
+          	fakestatus(`「 *✅ Suuccess Mode Public* 」`)
           	break
 	case 'self':
-          	if (!mek.key.fromMe) return fakestatus('SELF-BOT')
+          	if (!mek.key.fromMe) return fakestatus('Nabila Cantig')
           	if (banChats === true) return
           	uptime = process.uptime()
          	 // var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
          	banChats = true
-          	fakestatus(`「 *NbillaBotz* 」`)
+          	fakestatus(`「 *Nabila Cantig* 」`)
           	break
  	case 'hidetag':
-			if (!mek.key.fromMe) return fakestatus('SELF-BOT')
+			if (!mek.key.fromMe) return fakestatus('Nabila Cantig')
 			if (!isGroup) return reply(mess.only.group)
 			var value = args.join(' ')
 			var group = await hexa.groupMetadata(from)
@@ -921,7 +885,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
 			hexa.sendMessage(from, optionshidetag, text)
 			break
 	case 'play':
-			if (args.length === 0) return reply(`Kirim perintah *${prefix}play* _Judul lagu yang akan dicari_`)
+			if (args.length === 0) return fakegroup(`Kirim perintah *${prefix}play* _Judul lagu yang akan dicari_`)
             var srch = args.join('')
     		aramas = await yts(srch);
     		aramat = aramas.all 
@@ -943,7 +907,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
                         }
                    break  
         case 'video':
-            if (args.length === 0) return reply(`Kirim perintah *${prefix}video* _Judul lagu yang akan dicari_`)
+            if (args.length === 0) return fakegroup(`Kirim perintah *${prefix}video* _Judul lagu yang akan dicari_`)
             var srch = args.join('')
             aramas = await yts(srch);
             aramat = aramas.all 
@@ -1017,25 +981,25 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
                 .toFormat('webp')
                 .save(ran)
             } else {
-                reply(`Kirim gambar dengan caption ${prefix}sticker\nDurasi Sticker Video 1-9 Detik`)
+                fakegroup(`Kirim gambar dengan caption ${prefix}sticker\nDurasi Sticker Video 1-9 Detik`)
             }
             break               
     case 'toimg':
-			if (!isQuotedSticker) return reply('𝗥𝗲𝗽𝗹𝘆/𝘁𝗮𝗴 𝘀𝘁𝗶𝗰𝗸𝗲𝗿 !')
+			if (!isQuotedSticker) return fakegroup('𝗥𝗲𝗽𝗹𝘆/𝘁𝗮𝗴 𝘀𝘁𝗶𝗰𝗸𝗲𝗿 !')
 			reply(mess.wait)
 			encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 			media = await hexa.downloadAndSaveMediaMessage(encmedia)
 			ran = getRandom('.png')
 			exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 			fs.unlinkSync(media)
-			if (err) return reply('Yah gagal, coba ulangi ^_^')
+			if (err) return fakegroup('Yah gagal, coba ulangi ^_^')
 			buffer = fs.readFileSync(ran)
 			fakethumb(buffer,'NIH')
 			fs.unlinkSync(ran)
 			})
 			break
 	case 'ytsearch':
-			if (args.length < 1) return reply('Tolong masukan query!')
+			if (args.length < 1) return fakegroup('Tolong masukan query!')
 			var srch = args.join('');
 			try {
         	var aramas = await yts(srch);
@@ -1083,7 +1047,7 @@ ${anime.desc}\n\n*Link Batch* : ${anime.batch}\n*Link Download SD* : ${anime.bat
           	}
 			break	
 	case 'ytmp4':
-			if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
+			if (args.length === 0) return fakegroup(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
 			let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
 			if (!isLinks2) return reply(mess.error.Iv)
 				try {
