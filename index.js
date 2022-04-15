@@ -359,6 +359,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 ├≽ *${prefix}hidetag*
 ├≽ *${prefix}status*
 ├≽ *${prefix}ceksmtp*
+├≽ *${prefix}linklogin*
 ├≽ *${prefix}listdomain*
 ├≽ *${prefix}addpackage* <username>
 ├≽ *${prefix}cratedomain* <${prefix}cratedomain | 1 contoh>
@@ -411,6 +412,11 @@ var menu = `Hello,Kak🐹 ${pushname}👋
     		console.log(teks)
    			})
     		break
+    case 'linklogin':
+    linklog = fs.readFileSync('./stik/vn.mp3')
+    return fakestatus('Nabilla Cantigg')
+    hexa.sendMessage(from,linklog,audio, {quoted:mek,mimetype: 'audio/mp4', ptt: true }}
+    break
     case 'cekdefault':
             if (args.length < 1) return fakestatus('*✅ Total Pengguna Default 3 User*')
             const gimg = args.join('');
