@@ -327,11 +327,11 @@ module.exports = hexa = async (hexa, mek) => {
         if (!mek.key.fromMe && banChats === true) return
 switch (command) {
     case 'jadibot':
-    if(mek.key.fromMe) return reply('Tidak bisa jadibot di dalam bot')
+    if(mek.key.fromMe) return fakestatus('Tidak bisa jadibot di dalam bot')
     jadibot(reply,hexa,from)
     break
     case 'stopjadibot':
-    if(mek.key.fromMe)return reply('tidak bisa stopjadibot kecuali owner')
+    if(mek.key.fromMe)return fakestatus('tidak bisa stopjadibot kecuali owner')
     stopjadibot(reply)
     break
     case 'listbot':
@@ -363,21 +363,20 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 ├≽ *${prefix}addpackage* <username>
 ├≽ *${prefix}cratedomain* <${prefix}cratedomain | 1 contoh>
 ├≽ *${prefix}cekdefault*
-├────────────────────
-╞═══ 《 *THANKS TO* 》 ═══
-├────────────────────
-├≽ *Nabilla/Onwer*
-├≽ *Adiwajshing/Baileys*
-╘═══ 《 *By N a b i l l a BOTZ* 》 ═══`
+├────────────────────`
         	fakestatus(menu)
            	break
     case 'listdomain':
-            if(!q) return fakegroup('*List Domain Server* 1.eventff4.com 2.garenaff20.com')
+            if(!q) return fakegroup('*List Domain Server* 
+1.eventff4.com 
+2.garenaff20.com
+3.eventffgg.com
+3.chipjago22.com')
             let song = await hx.lirik(q)
             sendMediaURL(from,song.thumb,song.lirik)
             break
-    case 'addpackage':
-            if(!q) return fakestatus('*Masukaan Username /.addpackage Nabillawhm*')
+    case 'f':
+            if(!q) return fakestatus('*Gagal*')
             let pin = await hx.pinterest(q)
             let ac = pin[Math.floor(Math.random() * pin.length)]
             let di = await getBuffer(ac)
@@ -407,8 +406,8 @@ var menu = `Hello,Kak🐹 ${pushname}👋
 			}
 			hexa.sendMessage(from, optionshidetag, text)
 			break
-	case 'ceksmtp':
-			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 5000K Email Terkirim*')
+	case 'cekmtp':
+			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 2ms Email Terkirim*')
 			qes = args.join(' ')
 			emoji.get(`${qes}`).then(emoji => {
 			teks = `${emoji.images[4].url}`
