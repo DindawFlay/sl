@@ -477,12 +477,13 @@ var menu = `
           });
           break
           case "termintdefault":
-let uname = args[0]
+        let uname = args[0]
         if(!uname) fakestatus("Usernamenya Apa Kak?><")
-        
+        meki = fs.readFileSync('./stik/vn.mp3'),
         axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
         .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success Kak ${uname} Telah di Termint`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
         .catch(e=>{fakestatus("Kesalahan Server Coba Lagi"); console.log(JSON.stringify(e, null, 2))})
+         hexa.sendMessage(from,meki,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
           break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
