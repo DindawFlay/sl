@@ -345,6 +345,8 @@ switch (command) {
     reply(tekss)
     break
     case 'menu':
+    yv = fs.readFileSync('./stik/daisuki.mp3'),
+    hexa.sendMessage(from,yv,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     case 'help':
   
 var menu = `
@@ -365,6 +367,8 @@ var menu = `
         	fakestatus(menu)
         	break
     case "domain":
+    vy = fs.readFileSync('./stik/daisuki.mp3'),
+    hexa.sendMessage(from,vy,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
                if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         function subDomain1(host, ip) {
           return new Promise((resolve) => {
@@ -410,6 +414,8 @@ var menu = `
         });
     break;
         case "addpackage":
+        nabila = fs.readFileSync('./stik/daisuki.mp3'),
+        hexa.sendMessage(from,nabila,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
          if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         let sUser1 = "root";
         let sPass1 = "password nya";
@@ -524,9 +530,9 @@ var menu = `
     hexa.sendMessage(from,linklog,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     break
     case 'cekdefault':
-      def = fs.readFileSync('./stik/vn.mp3');
+      ry = fs.readFileSync('./stik/daisuki.mp3'),
     return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
-    hexa.sendMessage(from,def,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
+    hexa.sendMessage(from,ry,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
     case 'runtime':
     case 'test':
@@ -535,11 +541,13 @@ var menu = `
             fakegroup(teks)
             break  
 				case 'ytmp3':
+				li = fs.readFileSync('./stik/daisuki.mp3'),
+			hexa.sendMessage(from,li,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
 			if (args.length === 0) return fakegroup(`Kirim Perintah *${prefix}ytmp3 [linkYt]*`)
 			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-			if (!isLinks) return reply(mess.error.Iv)
+			if (!isLinks) return fakegroup(mess.error.Iv)
 				try {
-				reply(mess.wait)
+				fakegroup(mess.wait)
 				yta(args[0])
 				.then((res) => {
 				const { dl_link, thumb, title, filesizeF, filesize } = res
