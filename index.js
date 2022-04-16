@@ -530,9 +530,7 @@ var menu = `
     hexa.sendMessage(from,linklog,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     break
     case 'cekdefault':
-      ry = fs.readFileSync('./stik/daisuki.mp3'),
     return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
-    hexa.sendMessage(from,ry,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
     case 'runtime':
     case 'test':
