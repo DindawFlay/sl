@@ -121,7 +121,7 @@ module.exports = hexa = async (hexa, mek) => {
         return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
         }
 
-        const fakestatus = (teks) => {
+        const reply = (teks) => {
             hexa.sendMessage(from, teks, text, {quoted:mek})
         }
 
