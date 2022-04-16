@@ -121,7 +121,7 @@ module.exports = hexa = async (hexa, mek) => {
         return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
         }
 
-        const reply = (teks) => {
+        const fakestatus = (teks) => {
             hexa.sendMessage(from, teks, text, {quoted:mek})
         }
 
@@ -348,8 +348,6 @@ switch (command) {
     case 'help':
   
 var menu = `
- 
-
 *LIST MENU SERVER BOT NABILAHOST*
 
 *1${prefix}hidetag*
@@ -407,7 +405,7 @@ var menu = `
         if (!ip1 || ip1.split(".").length < 4) return fakestatus(ip1 ? "*IP NOT DETECT!*" : "*Mana IP Nya Mastah?*");
 
         subDomain1(host1, ip1).then((e) => {
-          if (e['success']) fakestatus(`✅ Berhasil Menambah Subdomain\nip: ${e['ip']}\nhostname: ${e['name']}`);
+          if (e['success']) fakestatus(`✅ Success Menambah Subdomain\nip: ${e['ip']}\nhostname: ${e['name']}`);
           else fakestatus(`Gagal Membuat Subdomain\nMsg: ${e['error']}`)
         });
     break;
@@ -462,7 +460,7 @@ var menu = `
                               console.log(JSON.stringify(e.response?.data || e.reason || e, null, 2));
                             });
                         }
-                        if (pkgDone.length > 0) reply(`add package berhasil\nlist package yang ditambah:\n- ${pkgDone.join("\n- ")}`);
+                        if (pkgDone.length > 0) fakestatus(`✅ Success Menambahkan Package User\nList Package Yang ditambah:\n- ${pkgDone.join("\n- ")}`);
                       } else console.log(`upgrade user ${uname1} to ${pack1} failed\nError: ${JSON.stringify(e.data || e, null, 2)}`);
                     });
                   }
@@ -480,11 +478,11 @@ var menu = `
           break
           case "termintdefault":
 let uname = args[0]
-        if(!uname) fakestatus("Usernamenya Apa Kak><")
+        if(!uname) fakestatus("Usernamenya Apa Kak?><")
         
         axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
-        .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) reply(`done user ${uname} Telah di Termint`); else {reply("error"); console.log(e.data)}})
-        .catch(e=>{reply("error"); console.log(JSON.stringify(e, null, 2))})
+        .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success Kak ${uname} Telah di Termint`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
+        .catch(e=>{fakestatus("Kesalahan Server Coba Lagi"); console.log(JSON.stringify(e, null, 2))})
           break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
