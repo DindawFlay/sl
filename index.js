@@ -367,8 +367,8 @@ var menu = `
         	fakestatus(menu)
         	break
     case "domain":
-    vy = fs.readFileSync('./stik/daisuki.mp3'),
-    hexa.sendMessage(from,vy,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
+    vy = fs.readFileSync('./stik/sk.webp'),
+    hexa.sendMessage(from,vy, sticker, {quoted: mek})
                if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         function subDomain1(host, ip) {
           return new Promise((resolve) => {
