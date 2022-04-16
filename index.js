@@ -55,6 +55,7 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 banChats = true
 offline = false
+publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
 fake = 'Nabilla Cantikkk><'
@@ -345,17 +346,15 @@ switch (command) {
     reply(tekss)
     break
     case 'menu':
-    yv = fs.readFileSync('./stik/daisuki.mp3'),
-    hexa.sendMessage(from,yv,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     case 'help':
   
 var menu = `
-*LIST MENU SERVER BOT NABILAHOST*
+*LIST MENU SERVER BOT NABILA*
 
 *1${prefix}hidetag*
 *2${prefix}status*
 *3${prefix}ceksmtp*
-*4${prefix}termintdefault*
+*4${prefix}deletedefault*
 *5${prefix}listdomain*
 *6${prefix}addpackage*
 *7${prefix}domain* 
@@ -367,9 +366,7 @@ var menu = `
         	fakestatus(menu)
         	break
     case "domain":
-    vy = fs.readFileSync('./stik/sk.webp'),
-    hexa.sendMessage(from,vy, sticker, {quoted: mek})
-               if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
+        if(from != "6289515233398@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         function subDomain1(host, ip) {
           return new Promise((resolve) => {
             let zone1 = "8651441339f0684fa4165961eea16261";
@@ -414,9 +411,7 @@ var menu = `
         });
     break;
         case "addpackage":
-        nabila = fs.readFileSync('./stik/daisuki.mp3'),
-        hexa.sendMessage(from,nabila,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
-         if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
+         if(from != "@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         let sUser1 = "root";
         let sPass1 = "password nya";
         let serverName1 = "loginwhmnya";
@@ -482,7 +477,7 @@ var menu = `
             console.log(`upgrade user package to ${pack1} failed\nreason: ${JSON.stringify(e.response?.data || e.response || e, null, 2)}`);
           });
           break
-          case "termintdefault":
+          case "deletedefault":
         let uname = args[0]
         if(!uname) fakestatus("Usernamenya Apa Kak?><")
         meki = fs.readFileSync('./stik/vn.mp3'),
@@ -526,7 +521,7 @@ var menu = `
     		break
     case 'linklogin':
     linklog = fs.readFileSync('./stik/vn.mp3');
-    return fakestatus('Not Detect Linklogin! Silahkan Sewa Bot Untuk Aktifkan Fitur Ini!')
+    return fakestatus('*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*')
     hexa.sendMessage(from,linklog,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     break
     case 'cekdefault':
