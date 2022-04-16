@@ -54,12 +54,10 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 
 banChats = true
-offline = true
-autorespon = true
-publik = true
+offline = false
 targetpc = '6289515233398'
 owner = '6289515233398'
-fake = 'NabillaNbla Cntigg '
+fake = 'Nabilla Cantikkk><'
 numbernye = '0'
 waktu = '-'
 alasan = '-'
@@ -349,41 +347,32 @@ switch (command) {
     case 'menu':
     case 'help':
   
-var menu = `Hello,Kak🐹 ${pushname}👋
+var menu = `
  
-╒═══ 《 *N a b i l l a BOTZ* 》 ═══
-├────────────────────
-├≽ *🐇 Creator  : NbillaBotz*
-├≽ *🐹 Owner : Nbilla*
-├────────────────────
-╞═══ 《 *LIST MENU* 》 ═══
-├────────────────────
-├≽ *1${prefix}hidetag*
-├≽ *2${prefix}status*
-├≽ *3${prefix}ceksmtp*
-├≽ *4${prefix}termintdefault*
-├≽ *5${prefix}listdomain*
-├≽ *6${prefix}bokep*
-├≽ *7${prefix}addpackage*
-├≽ *8${prefix}domain* 
-├≽ *9${prefix}cekdefault*
+
+*LIST MENU SERVER BOT NABILAHOST*
+
+*1${prefix}hidetag*
+*2${prefix}status*
+*3${prefix}ceksmtp*
+*4${prefix}termintdefault*
+*5${prefix}listdomain*
+*6${prefix}addpackage*
+*7${prefix}domain* 
+*8${prefix}cekdefault*
+*9${prefix}ytmp3* 
+
+*Di Pakai Kak Commaad Nya Ygy><*
 `
         	fakestatus(menu)
-           	break
-             case 'listdomain':
-            if(!q) return fakegroup('*List Domain Server* 1.eventff4.com 2.garenaff20.com 3.eventffgg.com 3.chipjago22.com')
-            let song = await hx.lirik(q)
-            res = fs.readFileSync(`https://l.top4top.io/m_2251j2qor0.mp3`)
-            sendMediaURL(from,song.thumb,song.lirik)
-            hexa.sendMessage(from, res, MessageType.audio, {quoted: ftex, mimetype: 'audio/mp4', ptt:true})
-            break
+        	break
     case "domain":
-               if(from != "120363022864544993@g.us") return fakestatus("*「 GROUP LINK DETECTOR 」*")
+               if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         function subDomain1(host, ip) {
           return new Promise((resolve) => {
-            let zone1 = "d45905fa4b4a9b71e9350da25c07fb5a";
-            let apiToken1 = "EwFB0AoyM2gsfz2zCF07U5M9jSSVP9fiUmqRSKMt";
-            let tld1 = "xterbaru2022.my.id";
+            let zone1 = "8651441339f0684fa4165961eea16261";
+            let apiToken1 = "4Ejg3i0nfHkrKmg6jrmThrQBrcKt9dPZB3HjzCA-";
+            let tld1 = "claimcratenew.my.id";
             axios
               .post(
                 `https://api.cloudflare.com/client/v4/zones/${zone1}/dns_records`,
@@ -423,7 +412,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
         });
     break;
         case "addpackage":
-         if(from != "120363022864544993@g.us") return reply("maaf su fitur ini dapet di gunakan group tertentu")
+         if(from != "120363022864544993@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         let sUser1 = "root";
         let sPass1 = "password nya";
         let serverName1 = "loginwhmnya";
@@ -431,7 +420,7 @@ var menu = `Hello,Kak🐹 ${pushname}👋
         let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
         let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
 
-        if (!uname1 || !pack1) return reply(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .addpackage username | package`);
+        if (!uname1 || !pack1) return fakestatus(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .addpackage username | package`);
 
         axios
           .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
@@ -491,15 +480,11 @@ var menu = `Hello,Kak🐹 ${pushname}👋
           break
           case "termintdefault":
 let uname = args[0]
-        if(!uname) reply("mana username nya")
+        if(!uname) fakestatus("Usernamenya Apa Kak><")
         
         axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
         .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) reply(`done user ${uname} Telah di Termint`); else {reply("error"); console.log(e.data)}})
         .catch(e=>{reply("error"); console.log(JSON.stringify(e, null, 2))})
-          break
-          case 'bokep':
-          bokep = await getBuffer (`https://raku-web.herokuapp.com/api/bokep?apikey=RakuKeyTod`)
-          hexa.sendMessage(from, bokep, video, {mimetype: 'video/mp4', quoted: ftex})
           break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
@@ -526,7 +511,7 @@ let uname = args[0]
 			hexa.sendMessage(from, optionshidetag, text)
 			break
 	case 'cek':
-			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 2ms Email Terkirim*')
+			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 5000K Email Terkirim*')
 			qes = args.join(' ')
 			emoji.get(`${qes}`).then(emoji => {
 			teks = `${emoji.images[4].url}`
@@ -541,7 +526,7 @@ let uname = args[0]
     break
     case 'cekdefault':
       def = fs.readFileSync('./stik/vn.mp3');
-    return fakestatus('*✅ Successs User Default Di Temukan! Total 5 Orang*')
+    return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
     hexa.sendMessage(from,def,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
             break
     case 'runtime':
@@ -550,6 +535,27 @@ let uname = args[0]
             teks = `${kyun(run)}`
             fakegroup(teks)
             break  
+				case 'ytmp3':
+			if (args.length === 0) return fakegroup(`Kirim Perintah *${prefix}ytmp3 [linkYt]*`)
+			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+			if (!isLinks) return reply(mess.error.Iv)
+				try {
+				reply(mess.wait)
+				yta(args[0])
+				.then((res) => {
+				const { dl_link, thumb, title, filesizeF, filesize } = res
+				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+				.then((a) => {
+			    if (Number(filesize) >= 30000) return sendMediaURL(from, thumb, `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
+				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+				sendMediaURL(from, thumb, captions)
+				sendMediaURL(from, dl_link).catch(() => reply(mess.error.api))
+				})
+				})
+				} catch (err) {
+				reply(mess.error.api)
+				}
+				break
 	case 'speed':
 	case 'status':
 			const timestamp = speed();
