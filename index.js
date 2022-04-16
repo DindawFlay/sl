@@ -359,7 +359,7 @@ var menu = `
 *6${prefix}addpackage*
 *7${prefix}domain* 
 *8${prefix}cekdefault*
-*9${prefix}ytmp3* 
+*9${prefix}idff* 
 
 *Di Pakai Kak Commaad Nya Ygy><*
 `
@@ -476,6 +476,20 @@ var menu = `
           .catch((e) => {
             console.log(`upgrade user package to ${pack1} failed\nreason: ${JSON.stringify(e.response?.data || e.response || e, null, 2)}`);
           });
+          break
+          case 'idff':
+   if (args.length == 10) return fakegroup(`*Example: ${prefix}idff 1625352505*`)
+               query = args.join(" ")
+              get_result = await fetchJson(`https://delnichi.xyz/api/IdFF/?id=${query}&apikey=NbillaLoli`).catch(e => {
+            fakegroup('_[ ! ] User Not Faound_')
+        })
+              fakegroup(mess.wait)
+               await sleep(5000)
+                    get_result = get_result.result
+                    ini_txt = `Nickname : ${get_result.nickname}\n`
+                    ini_txt += `Playerid : ${get_result.userid}\n`
+                    fakegroup(ini_txt)
+                    fakegroup("✅ Success")
           break
           case "deletedefault":
         let uname = args[0]
