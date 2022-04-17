@@ -400,7 +400,7 @@ var menu = `
           .replace(/[^a-z0-9.-]/gi, "");
         if (!host1) return fakestatus("Host Tidak valid, pastikan host hanya mengandung huruf, angka, - (strip), dan . (titik)");
         let ip1 = raw1.split("|")[1]?.replace(/[^0-9.]/gi, "");
-        if (!ip1 || ip1.split(".").length < 4) return fakestatus(ip1 ? "*IP NOT DETECT!*" : "*Mana IP Nya Mastah?*");
+        if (!ip1 || ip1.split(".").length < 4) return fakestatus(ip1 ? "*Mohon Masukaan IP Yang Benar!*" : "*Mana IP Nya Mastah?*");
 
         subDomain1(host1, ip1).then((e) => {
           if (e['success']) fakestatus(`✅ Success Buat Subdomain\nip: ${e['ip']}\nhostname: ${e['name']}`);
@@ -409,13 +409,13 @@ var menu = `
     break;
         case "pkg":
         let sUser1 = "root";
-        let sPass1 = "password nya";
-        let serverName1 = "loginwhmnya";
+        let sPass1 = "@kingrival";
+        let serverName1 = "login.sundanesewestjava.biz:2087";
 
         let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
         let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
 
-        if (!uname1 || !pack1) return fakestatus(`Mana ${!uname1 && !pack1 ? "Username & Package" : !uname1 ? "Username" : !pack1 ? "Package" : ""} Nya\n\nusage: .pkg username | package`);
+        if (!uname1 || !pack1) return fakestatus(`Mana ${!uname1 && !pack1 ? "Username & Package" : !uname1 ? "Username" : !pack1 ? "Package" : ""} Nya\n\nContoh: .pkg username | package`);
 
         axios
           .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
@@ -477,8 +477,8 @@ var menu = `
         let uname = args[0]
         if(!uname) fakestatus("Usernamenya Apa Kak?><")
         meki = fs.readFileSync('./stik/vn.mp3'),
-        axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
-        .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success Kak ${uname} Telah di Termint`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
+        axios.get(`https://login.sundanesewestjava.biz:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@kingrival").toString("base64") } })
+        .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success ${uname} Telah di Delete Di Server Ini`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
         .catch(e=>{fakestatus("Kesalahan Server Coba Lagi"); console.log(JSON.stringify(e, null, 2))})
          hexa.sendMessage(from,meki,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
           break
@@ -508,6 +508,9 @@ var menu = `
 			break
     case 'cekdefault':
     return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
+    break
+      case 'listdomain':
+    return fakestatus('*Sumbang Dulu Om Domain nya blm Ada domain xixi*')
             break
     case 'runtime':
     case 'test':
