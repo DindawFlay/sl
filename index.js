@@ -55,7 +55,6 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 banChats = true
 offline = false
-publik = true
 targetpc = '6289515233398'
 owner = '6289515233398'
 fake = 'Nabilla Cantikkk><'
@@ -162,7 +161,7 @@ module.exports = hexa = async (hexa, mek) => {
             })
         }
         const fakethumb = (teks, yes) => {
-            hexa.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/fake.jpeg'),quoted:mek,caption:yes})
+            hexa.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/ppfake.jpeg'),quoted:mek,caption:yes})
         }
         const fakegroup = (teks) => {
             hexa.sendMessage(from, teks, text, {
@@ -354,7 +353,7 @@ var menu = `
 *1${prefix}hidetag*
 *2${prefix}status*
 *3${prefix}ceksmtp*
-*4${prefix}deletedefault*
+*4${prefix}deletedef*
 *5${prefix}listdomain*
 *6${prefix}pkg*
 *7${prefix}domain* 
@@ -411,12 +410,12 @@ var menu = `
         case "pkg":
         let sUser1 = "root";
         let sPass1 = "password nya";
-        let serverName1 = "login.sundanesewestjava.biz:2087";
+        let serverName1 = "loginwhmnya";
 
         let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
         let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
 
-        if (!uname1 || !pack1) return fakestatus(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .pkg username | package`);
+        if (!uname1 || !pack1) return fakestatus(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .addpackage username | package`);
 
         axios
           .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
@@ -474,12 +473,14 @@ var menu = `
             console.log(`upgrade user package to ${pack1} failed\nreason: ${JSON.stringify(e.response?.data || e.response || e, null, 2)}`);
           });
           break
-          case "deletedefault":
+          case "deletedef":
         let uname = args[0]
         if(!uname) fakestatus("Usernamenya Apa Kak?><")
+        meki = fs.readFileSync('./stik/vn.mp3'),
         axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
         .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success Kak ${uname} Telah di Termint`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
         .catch(e=>{fakestatus("Kesalahan Server Coba Lagi"); console.log(JSON.stringify(e, null, 2))})
+         hexa.sendMessage(from,meki,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
           break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
@@ -505,20 +506,6 @@ var menu = `
 			}
 			hexa.sendMessage(from, optionshidetag, text)
 			break
-	case 'ceksmtp':
-			if (!q) return fakegroup('*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*')
-			qes = args.join(' ')
-			emoji.get(`${qes}`).then(emoji => {
-			teks = `${emoji.images[4].url}`
-    		sendStickerFromUrl(from,`${teks}`)	
-    		console.log(teks)
-   			})
-    		break
-    case 'listdomain':
-    ls = fs.readFileSync('./stik/vn.mp3'),
-    return fakestatus('*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*')
-    hexa.sendMessage(from,ls,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
-    break
     case 'cekdefault':
     return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
             break
@@ -528,29 +515,6 @@ var menu = `
             teks = `${kyun(run)}`
             fakegroup(teks)
             break  
-				case 'ytmp3':
-				li = fs.readFileSync('./stik/daisuki.mp3'),
-			hexa.sendMessage(from,li,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
-			if (args.length === 0) return fakegroup(`Kirim Perintah *${prefix}ytmp3 [linkYt]*`)
-			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-			if (!isLinks) return fakegroup(mess.error.Iv)
-				try {
-				fakegroup(mess.wait)
-				yta(args[0])
-				.then((res) => {
-				const { dl_link, thumb, title, filesizeF, filesize } = res
-				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-				.then((a) => {
-			    if (Number(filesize) >= 30000) return sendMediaURL(from, thumb, `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
-				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-				sendMediaURL(from, thumb, captions)
-				sendMediaURL(from, dl_link).catch(() => reply(mess.error.api))
-				})
-				})
-				} catch (err) {
-				reply(mess.error.api)
-				}
-				break
 	case 'speed':
 	case 'status':
 			const timestamp = speed();
@@ -575,7 +539,7 @@ reply(e)
 	}
 if (isGroup && budy != undefined) {
 	} else {
-	console.log(color('[TEXT]', 'red'), 'SELF-MODE', color(sender.split('@')[0]))
+	console.log(color('[TEXT]', 'red'), 'RevlyNbila', color(sender.split('@')[0]))
 	}		
 	} catch (e) {
     e = String(e)
