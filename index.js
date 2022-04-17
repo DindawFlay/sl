@@ -367,7 +367,7 @@ var menu = `
         function subDomain1(host, ip) {
           return new Promise((resolve) => {
             let zone1 = "8651441339f0684fa4165961eea16261";
-            let apiToken1 = "4Ejg3i0nfHkrKmg6jrmThrQBrcKt9dPZB3HjzCA-";
+            let apiToken1 = "2p6mq_ZgWqzH5ueSnQKROLznXkftzkY891skY4gp";
             let tld1 = "claimcratenew.my.id";
             axios
               .post(
@@ -403,8 +403,8 @@ var menu = `
         if (!ip1 || ip1.split(".").length < 4) return fakestatus(ip1 ? "*IP NOT DETECT!*" : "*Mana IP Nya Mastah?*");
 
         subDomain1(host1, ip1).then((e) => {
-          if (e['success']) fakestatus(`✅ Success Menambah Subdomain\nip: ${e['ip']}\nhostname: ${e['name']}`);
-          else fakestatus(`Gagal Membuat Subdomain\nMsg: ${e['error']}`)
+          if (e['success']) fakestatus(`✅ Success Buat Subdomain\nip: ${e['ip']}\nhostname: ${e['name']}`);
+          else fakestatus(`Gagal Silahkan Coba Lagi\nMessage: ${e['error']}`)
         });
     break;
         case "pkg":
@@ -415,7 +415,7 @@ var menu = `
         let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
         let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
 
-        if (!uname1 || !pack1) return fakestatus(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .addpackage username | package`);
+        if (!uname1 || !pack1) return fakestatus(`Mana ${!uname1 && !pack1 ? "Username & Package" : !uname1 ? "Username" : !pack1 ? "Package" : ""} Nya\n\nusage: .pkg username | package`);
 
         axios
           .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
