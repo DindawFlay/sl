@@ -356,17 +356,15 @@ var menu = `
 *3${prefix}ceksmtp*
 *4${prefix}deletedefault*
 *5${prefix}listdomain*
-*6${prefix}addpackage*
+*6${prefix}pkg*
 *7${prefix}domain* 
 *8${prefix}cekdefault*
-*9${prefix}idff* 
 
 *Di Pakai Kak Commaad Nya Ygy><*
 `
         	fakestatus(menu)
         	break
     case "domain":
-        if(from != "6289515233398@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
         function subDomain1(host, ip) {
           return new Promise((resolve) => {
             let zone1 = "8651441339f0684fa4165961eea16261";
@@ -410,16 +408,15 @@ var menu = `
           else fakestatus(`Gagal Membuat Subdomain\nMsg: ${e['error']}`)
         });
     break;
-        case "addpackage":
-         if(from != "@g.us") return fakestatus("*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*")
+        case "pkg":
         let sUser1 = "root";
         let sPass1 = "password nya";
-        let serverName1 = "loginwhmnya";
+        let serverName1 = "login.sundanesewestjava.biz:2087";
 
         let uname1 = args?.join(" ")?.trim()?.split("|")?.[0]?.trim();
         let pack1 = args?.join(" ")?.trim()?.split("|")?.[1]?.trim();
 
-        if (!uname1 || !pack1) return fakestatus(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .addpackage username | package`);
+        if (!uname1 || !pack1) return fakestatus(`mana ${!uname1 && !pack1 ? "username & package" : !uname1 ? "username" : !pack1 ? "package" : ""} nya\n\nusage: .pkg username | package`);
 
         axios
           .get(`https://${serverName1}/json-api/listpkgs?api.version=1`, { headers: { Authorization: "Basic " + Buffer.from(sUser1 + ":" + sPass1).toString("base64") } })
@@ -477,28 +474,12 @@ var menu = `
             console.log(`upgrade user package to ${pack1} failed\nreason: ${JSON.stringify(e.response?.data || e.response || e, null, 2)}`);
           });
           break
-          case 'idff':
-   if (args.length == 10) return fakegroup(`*Example: ${prefix}idff 1625352505*`)
-               query = args.join(" ")
-              get_result = await fetchJson(`https://delnichi.xyz/api/IdFF/?id=${query}&apikey=NbillaLoli`).catch(e => {
-            fakegroup('_[ ! ] User Not Faound_')
-        })
-              fakegroup(mess.wait)
-               await sleep(5000)
-                    get_result = get_result.result
-                    ini_txt = `Nickname : ${get_result.nickname}\n`
-                    ini_txt += `Playerid : ${get_result.userid}\n`
-                    fakegroup(ini_txt)
-                    fakegroup("✅ Success")
-          break
           case "deletedefault":
         let uname = args[0]
         if(!uname) fakestatus("Usernamenya Apa Kak?><")
-        meki = fs.readFileSync('./stik/vn.mp3'),
         axios.get(`https://login.yanznesia.tk:2087/json-api/removeacct?api.version=1&username=${uname}`, { headers: { Authorization: "Basic " + Buffer.from("root:@#yanzgegeparah").toString("base64") } })
         .then(e=>{if([1, "1"].includes(e.data?.metadata?.result)) fakestatus(`✅ Success Kak ${uname} Telah di Termint`); else {fakestatus("Mohon Maaf Gagal Silahkan Coba Lagi"); console.log(e.data)}})
         .catch(e=>{fakestatus("Kesalahan Server Coba Lagi"); console.log(JSON.stringify(e, null, 2))})
-         hexa.sendMessage(from,meki,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
           break
     case 'public':
           	if (!mek.key.fromMe) return fakestatus('Nabilla Cantig')
@@ -524,8 +505,8 @@ var menu = `
 			}
 			hexa.sendMessage(from, optionshidetag, text)
 			break
-	case 'cek':
-			if (!q) return fakegroup('*✅ Sucesss Smtp Server  | 5000K Email Terkirim*')
+	case 'ceksmtp':
+			if (!q) return fakegroup('*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*')
 			qes = args.join(' ')
 			emoji.get(`${qes}`).then(emoji => {
 			teks = `${emoji.images[4].url}`
@@ -533,10 +514,10 @@ var menu = `
     		console.log(teks)
    			})
     		break
-    case 'linklogin':
-    linklog = fs.readFileSync('./stik/vn.mp3');
+    case 'listdomain':
+    ls = fs.readFileSync('./stik/vn.mp3'),
     return fakestatus('*「 MAAF KAK FITUR INI KUSHUS GROUP TERTENTU」*')
-    hexa.sendMessage(from,linklog,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
+    hexa.sendMessage(from,ls,MessageType.audio,{quoted: mek, mimetype: 'audio/mp4',ppt:true})
     break
     case 'cekdefault':
     return fakestatus('*✅ Successs User Default Di Temukan! Total 6 Orang*')
